@@ -47,6 +47,26 @@ body {
   margin: 30px 0;
 }
 
+.rowSpacer{
+  padding-left: 5px;
+  padding-right: 10px;
+  display:inline;
+  font-size:1.45pc;
+}
+
+
+.colSpacer{
+  display:inline;
+  font-size:1.15pc;
+}
+
+#tile{
+  display: inline;
+  margin-bottom: 10px;
+  padding: 30px;
+  min-width: 95px;
+  min-height: 95px;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -78,11 +98,13 @@ body {
       display: inline;
       margin-bottom: 10px;
       padding: 30px;
+      min-width: 95px;
     }
     .rowSpacer{
-      padding-left: 10px;
-      padding-right: 15px;
+      padding-left: 5px;
+      padding-right: 10px;
       display:inline;
     }
   }
+
 }

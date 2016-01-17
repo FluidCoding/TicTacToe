@@ -101,14 +101,19 @@ function displayGame(snapshot){
   // TODO: Check for Win her
   var winner = checkWin();
   console.log("Win Check "+ winner);
-  var spacer = "______";
+  var spacer = "_______";
   var board = $("#board");
   var cached = [];
   board.empty();
   switch(winner){
   case -1:
     if(Game.players===2){
-      cached.push("<p>" + Game.turn + "'s Turn</p>");
+      if(player===Game.turn){
+          cached.push("<p>Your Turn(" +  player  + ")</p>");
+      }
+      else{
+        cached.push("<p>" + Game.turn + "'s Turn</p>");
+      }
     }
     else {
         cached.push("<p> Waiting for player 2 to join...</p>");
@@ -134,7 +139,7 @@ function displayGame(snapshot){
   for(var row = 0; row<3; row++){
     for(var col=0; col<3; col++){
       cached.push("<button onclick=\"selectToe("+row+" , " + col+")\" id=\"tile\" type=\"button\" class=\"btn btn-secondary\"> "+ Game.tiles[row][col] + " </button>");
-      if(col<2)cached.push(" | ");
+      if(col<2)cached.push(" <span class=\"colSpacer\"> | </span> ");
     }
     if(row<2){
       cached.push("<br>");
