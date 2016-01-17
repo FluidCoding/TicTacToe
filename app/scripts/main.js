@@ -27,6 +27,16 @@ function createGame(){
   }
 }
 
+function rematch(){
+    if(!Game.isOver){
+      Game.isOver = false;
+      Game.turn = 'X';
+      Game.players = 2;
+      Game.tiles = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
+      id.set(Game, function(Error){console.log(Error);});
+    }
+}
+
 // TODO: Enforce Turns
 function selectToe(row, col){
   console.log(Game.turn == player);
@@ -40,18 +50,30 @@ function selectToe(row, col){
     }
   }
 }
-function newGame(){
-  Game.tiles = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
-  Game.isOver = false;
-  Game.turn = 'X';
+function clearGames(){
+  fbRef.set(null,  function(Error){console.log(Error);});
 }
+function checkWin(){
+  var winner = -1;
+  //Check horizontals
+  for(var row=0;row<3;row++){
+    for(var )
+  }
+  // Check Verticals
 
+  // Check Diagnols
+
+  // Check Tie
+
+}
 function displayGame(snapshot){
+  if(snapshot===null)return;
   console.log("Displaying Board...");
   console.log(snapshot.val());
   Game = snapshot.val();
   // TODO: Check for Win her
-  let spacer = "______";
+  var winner = checkWin();
+  var spacer = "______";
   var board = $("#board");
   var cached = [];
   board.empty();
@@ -77,6 +99,7 @@ function displayGame(snapshot){
 }
 var count = 0;
 function listGames(snapshot){
+  if(snapshot===null)return;
   count++;
   console.log(snapshot.val());
   var board = $("#board");
